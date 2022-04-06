@@ -19,7 +19,7 @@ function!s:PerlTidy()
       let b:lastline = line('$')
     endif
     let lines = join(getline(b:firstline, b:lastline), "\n")
-    let b:perltidy_output = system('perltidy -q ', lines)
+    let b:perltidy_output = system('perltidy -q --profile=.../.perltidyrc', lines)
     let &shell = old_shell
     let prevcur = getpos(".")
     let prevx = getpos("'x")
