@@ -37,9 +37,9 @@ function!s:PerlTidy()
     set nopaste
 endfunction
 
-command! -nargs=* -range -bang PerlTidy <line1>,<line2>call s:PerlTidy()
+command! -nargs=* -range -bar -bang PerlTidy <line1>,<line2>call s:PerlTidy()
 
 vnoremap :call PerlTidy() t
-au BufWritePre *.p[lm],*.t call s:PerlTidy()
+au BufWritePre *.p[lm],*.t if get(g:, 'perltidy_fmt_on_save', 1) | call s:PerlTidy() | endif
 
 let g:perltidy = 1
